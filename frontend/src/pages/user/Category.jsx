@@ -1,5 +1,5 @@
 import React from "react";
-import { getUserCategories } from "../../services/userCategoryApi";
+import { getUserCategories } from "../../services/UserCategoryApi";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
