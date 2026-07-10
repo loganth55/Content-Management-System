@@ -22,10 +22,9 @@ const seedAdmin = require("./seed/adminSeed");
 const PORT = process.env.PORT || 8000;
 
 //middlewares
-
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://cms-blog-platform.netlify.app"],
     credentials: true,
   }),
 );
