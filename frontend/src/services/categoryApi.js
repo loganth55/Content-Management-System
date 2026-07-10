@@ -1,6 +1,6 @@
 import API from "./api";
 
-const apiUrl = "/api/admin/categories";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api/admin/categories`;
 
 export const getAllCategory = async (params) => {
   const response = await API.get(apiUrl, {

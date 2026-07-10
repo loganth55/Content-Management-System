@@ -1,6 +1,8 @@
 import { Pencil, Trash2 } from "lucide-react";
 
 function CategoryTable({ categories, onEdit, onDelete }) {
+  
+  const apiUrl = import.meta.env.VITE_API_URL;
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
       {/* Header */}
@@ -42,7 +44,7 @@ function CategoryTable({ categories, onEdit, onDelete }) {
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-4">
                       <img
-                        src={`http://localhost:8000${category.img}`}
+                        src={`${apiUrl}${category.img}`}
                         alt={category.name}
                         className="w-14 h-14 rounded-xl object-cover border"
                       />

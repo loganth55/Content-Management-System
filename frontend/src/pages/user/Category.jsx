@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Category() {
+
+const apiUrl=import.meta.env.VITE_API_URL
   const [getCategories, setCategories] = React.useState([]);
   const navigate = useNavigate();
 
@@ -52,7 +54,7 @@ function Category() {
             className="border rounded-2xl overflow-hidden bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
             <img
-              src={`http://localhost:8000${category.img}`}
+              src={`${apiUrl}${category.img}`}
               alt={category.name}
               className="w-full h-36 object-cover"
             />

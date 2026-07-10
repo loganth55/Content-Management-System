@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const apiUrl = "http://localhost:8000/api/comment";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api/comment`;
 
 export const getComment = async(id)=>{
     const response = await axios.get(`${apiUrl}/${id}`)

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8000/bookmark";
+const apiUrl = `${import.meta.env.VITE_API_URL}/bookmark`;
 
 export const saveBookmark = async (blogId) => {
   const token = localStorage.getItem("token");

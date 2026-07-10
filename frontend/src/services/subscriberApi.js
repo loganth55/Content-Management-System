@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8000/api/subscribe";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api/subscribe`;
 
 export const subscribe = async () => {
   const token = localStorage.getItem("token");

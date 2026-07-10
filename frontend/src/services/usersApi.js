@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = "http://localhost:8000/api/admin/users";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api/admin/users`;
 
 export const getUsers = async (
   page = 1,
