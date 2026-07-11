@@ -194,6 +194,21 @@ return (
       }}
       onDelete={handleDeleteCategory}
     />
+    {/* Pagination */}
+    <Pagination page={page} setPage={setPage} pagination={pagination} />
+
+    {/* Category Modal */}
+    <CategoryModal
+      open={openModal}
+      setOpen={setOpenModal}
+      editData={editData}
+      formData={formData}
+      setFormData={setFormData}
+      image={image}
+      setImage={setImage}
+      handleCreateCategory={handleCreateCategory}
+      handleUpdateCategory={handleUpdateCategory}
+    />
   </div>
 );
 }
