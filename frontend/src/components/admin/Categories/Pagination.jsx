@@ -3,11 +3,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 function Pagination({ page, setPage, pagination }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-6 py-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <button
           disabled={!pagination.hasPrevPage}
           onClick={() => setPage(page - 1)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition ${
+          className={`w-full sm:w-auto justify-center flex items-center gap-2 px-4 py-2 rounded-lg border transition ${
             pagination.hasPrevPage
               ? "hover:bg-gray-100"
               : "opacity-50 cursor-not-allowed"
@@ -24,7 +24,7 @@ function Pagination({ page, setPage, pagination }) {
         <button
           disabled={!pagination.hasNextPage}
           onClick={() => setPage(page + 1)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition ${
+          className={`w-full sm:w-auto justify-center flex items-center gap-2 px-4 py-2 rounded-lg border transition ${
             pagination.hasNextPage
               ? "hover:bg-gray-100"
               : "opacity-50 cursor-not-allowed"

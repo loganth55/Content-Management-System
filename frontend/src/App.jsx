@@ -62,45 +62,45 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
+            
                 <Home />
-              </ProtectedRoute>
+          
             }
           />
 
           <Route
             path="/blogs"
             element={
-              <ProtectedRoute>
+              
                 <Blogs />
-              </ProtectedRoute>
+            
             }
           />
 
           <Route
             path="/blog/:id"
             element={
-              <ProtectedRoute>
+            
                 <BlogDetails />
-              </ProtectedRoute>
+            
             }
           />
 
           <Route
             path="/categories"
             element={
-              <ProtectedRoute>
+          
                 <Category />
-              </ProtectedRoute>
+          
             }
           />
 
           <Route
             path="/category/:categoryName"
             element={
-              <ProtectedRoute>
+            
                 <CategoryBlogs />
-              </ProtectedRoute>
+    
             }
           />
 

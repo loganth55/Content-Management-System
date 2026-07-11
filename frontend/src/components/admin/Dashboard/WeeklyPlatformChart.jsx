@@ -37,21 +37,49 @@ function WeeklyPlatformChart({ weeklyPlatformActivity }) {
               bottom: 0,
             }}
           >
-            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <CartesianGrid
+              vertical={false}
+              strokeDasharray="4 4"
+              stroke="#E5E7EB"
+            />
+            <XAxis
+              dataKey="day"
+              tickLine={false}
+              axisLine={false}
+              tick={{
+                fill: "#6B7280",
+                fontSize: 12,
+              }}
+            />
 
-            <XAxis dataKey="day" tickLine={false} axisLine={false} />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tick={{
+                fill: "#6B7280",
+                fontSize: 12,
+              }}
+            />
 
-            <YAxis tickLine={false} axisLine={false} />
+            <Tooltip
+              cursor={{
+                fill: "rgba(99,102,241,0.08)",
+              }}
+              contentStyle={{
+                borderRadius: "12px",
+                border: "none",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
+              }}
+            />
 
-            <Tooltip />
-
-            <Legend />
-
+            <Legend verticalAlign="top" height={40} iconType="circle" />
             <Bar
               dataKey="users"
               fill="#8B5CF6"
               radius={[8, 8, 0, 0]}
               maxBarSize={16}
+              animationDuration={1800}
+              animationBegin={0}
             />
 
             <Bar
@@ -59,6 +87,8 @@ function WeeklyPlatformChart({ weeklyPlatformActivity }) {
               fill="#3B82F6"
               radius={[8, 8, 0, 0]}
               maxBarSize={16}
+              animationDuration={1800}
+              animationBegin={200}
             />
 
             <Bar
@@ -66,6 +96,8 @@ function WeeklyPlatformChart({ weeklyPlatformActivity }) {
               fill="#22C55E"
               radius={[8, 8, 0, 0]}
               maxBarSize={16}
+              animationDuration={1800}
+              animationBegin={400}
             />
           </BarChart>
         </ResponsiveContainer>

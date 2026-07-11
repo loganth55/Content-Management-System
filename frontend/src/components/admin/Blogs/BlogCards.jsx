@@ -6,10 +6,16 @@ import {
   TrendingUp,
   TrendingDown,
 } from "lucide-react";
+import * as CountUpModule from "react-countup";
+
 
 import { ResponsiveContainer, LineChart, Line } from "recharts";
 
 function BlogCards({ cards }) {
+
+  
+const CountUp = CountUpModule.default.default;
+
   const cardData = [
     {
       title: "Total Blogs",
@@ -78,7 +84,14 @@ function BlogCards({ cards }) {
             <p className="text-gray-500 text-sm">{card.title}</p>
 
             {/* Value */}
-            <h2 className="text-5xl font-bold mt-2">{card.value}</h2>
+            <h2 className="text-5xl font-bold mt-2">
+              <CountUp
+                end={card.value}
+                duration={2}
+                enableScrollSpy
+                scrollSpyOnce
+              />
+            </h2>
 
             {/* Growth */}
             <div className="mt-6">
@@ -116,6 +129,9 @@ function BlogCards({ cards }) {
                     strokeWidth={3}
                     dot={false}
                     activeDot={false}
+                    isAnimationActive={true}
+                    animationDuration={1800}
+                    animationEasing="ease-out"
                   />
                 </LineChart>
               </ResponsiveContainer>

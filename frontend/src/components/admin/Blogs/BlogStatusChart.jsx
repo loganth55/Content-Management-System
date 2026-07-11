@@ -1,4 +1,8 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+
+import * as CountUpModule from "react-countup";
+
+
 
 const COLORS = [
   "#8B5CF6", // Purple - Total
@@ -6,6 +10,7 @@ const COLORS = [
   "#F59E0B", // Orange - Draft
 ];
 function BlogStatusChart({ data = [], totalBlogs }) {
+  const CountUp = CountUpModule.default.default;
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
       <h2 className="text-xl font-bold">Blog Status</h2>
@@ -22,17 +27,33 @@ function BlogStatusChart({ data = [], totalBlogs }) {
               innerRadius={65}
               outerRadius={90}
               paddingAngle={3}
+              animationBegin={0}
+              animationDuration={1800}
+              animationEasing="ease-out"
             >
               {data.map((entry, index) => (
-                <Cell key={entry.name} fill={COLORS[index]} />
+                <Cell
+                  key={entry.name}
+                  fill={COLORS[index]}
+                  stroke="#fff"
+                  strokeWidth={2}
+                />
               ))}
             </Pie>
+            <Tooltip />
           </PieChart>
         </ResponsiveContainer>
 
         {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <h2 className="text-3xl font-bold">{totalBlogs}</h2>
+          <h2 className="text-3xl font-bold">
+            <CountUp
+              end={totalBlogs}
+              duration={2}
+              enableScrollSpy
+              scrollSpyOnce
+            />
+          </h2>
 
           <p className="text-sm text-gray-500">Total Blogs</p>
         </div>
@@ -52,7 +73,14 @@ function BlogStatusChart({ data = [], totalBlogs }) {
               <span>{item.name}</span>
             </div>
 
-            <span>{item.value}</span>
+            <span className="font-semibold">
+              <CountUp
+                end={item.value}
+                duration={2}
+                enableScrollSpy
+                scrollSpyOnce
+              />
+            </span>
           </div>
         ))}
       </div>

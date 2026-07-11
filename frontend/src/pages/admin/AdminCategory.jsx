@@ -15,6 +15,9 @@ import {
 } from "../../services/categoryApi";
 function AdminCategory(){
 
+
+
+
 const [cards, setCards] = useState({
   totalCategories: 0,
   activeCategories: 0,
@@ -47,6 +50,7 @@ const [formData, setFormData] = useState({
 });
 
 const [image, setImage] = useState(null);
+
 
 useEffect(() => {
   fetchCategories();
@@ -165,8 +169,7 @@ if (loading) {
   );
 }
 return (
-  <div className="p-6 space-y-6">
-    {/* Header */}
+  <div className="p-4 sm:p-6 space-y-6">
     <div>
       <h1 className="text-3xl font-bold">Categories Management</h1>
 
@@ -174,11 +177,7 @@ return (
         Manage all blog categories from one place.
       </p>
     </div>
-
-    {/* Cards */}
     <CategoryCards cards={cards} />
-
-    {/* Filters */}
     <CategoryFilters
       search={search}
       setSearch={setSearch}
@@ -187,7 +186,6 @@ return (
       setOpenModal={setOpenModal}
     />
 
-    {/* Table */}
     <CategoryTable
       categories={categories}
       onEdit={(category) => {
@@ -195,21 +193,6 @@ return (
         setOpenModal(true);
       }}
       onDelete={handleDeleteCategory}
-    />
-
-    {/* Pagination */}
-    <Pagination page={page} setPage={setPage} pagination={pagination} />
-
-    <CategoryModal
-      open={openModal}
-      setOpen={setOpenModal}
-      editData={editData}
-      formData={formData}
-      setFormData={setFormData}
-      image={image}
-      setImage={setImage}
-      handleCreateCategory={handleCreateCategory}
-      handleUpdateCategory={handleUpdateCategory}
     />
   </div>
 );

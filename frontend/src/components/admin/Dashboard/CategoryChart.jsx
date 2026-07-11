@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import * as CountUpModule from "react-countup";
+
+
 function CategoryChart({ topCategories }) {
   const colors = [
     "bg-violet-500",
@@ -6,7 +10,16 @@ function CategoryChart({ topCategories }) {
     "bg-orange-500",
     "bg-pink-500",
   ];
+  const CountUp = CountUpModule.default.default;
+const [animate, setAnimate] = useState(false);
 
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setAnimate(true);
+  }, 200);
+
+  return () => clearTimeout(timer);
+}, []);
   const maxValue = Math.max(...topCategories.map((item) => item.blogs));
 
   return (
@@ -20,26 +33,35 @@ function CategoryChart({ topCategories }) {
             Most published categories
           </p>
         </div>
-
-        
       </div>
 
       {/* Categories */}
 
       <div className="space-y-7">
         {topCategories.map((item, index) => (
-          <div key={item.category}>
+          <div
+            key={item.category}
+            className="transition-all duration-300 hover:scale-[1.02]"
+          >
             <div className="flex justify-between items-center mb-2">
               <p className="text-gray-700 font-medium">{item.category}</p>
 
-              <p className="font-semibold">{item.blogs}</p>
+              <p className="font-semibold">
+                <CountUp
+                  end={item.blogs}
+                  duration={2}
+                  enableScrollSpy
+                  scrollSpyOnce
+                />
+              </p>
             </div>
 
             <div className="w-full bg-gray-100 rounded-full h-2.5">
               <div
-                className={`${colors[index]} h-2.5 rounded-full transition-all duration-700`}
+                className={`${colors[index]} h-2.5 rounded-full transition-all duration-1000 ease-out`}
                 style={{
-                  width: `${(item.blogs / maxValue) * 100}%`,
+                  width: animate ? `${(item.blogs / maxValue) * 100}%` : "0%",
+                  transitionDelay: `${index * 150}ms`,
                 }}
               />
             </div>

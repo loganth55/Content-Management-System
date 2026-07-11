@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { ResponsiveContainer, AreaChart, Area } from "recharts";
+import * as CountUpModule from "react-countup";
 
 const cardConfig = [
   {
@@ -53,6 +54,7 @@ const cardConfig = [
 ];
 
 function DashboardCard({ cards }) {
+  const CountUp = CountUpModule.default.default;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
       {cardConfig.map((card) => {
@@ -62,7 +64,7 @@ function DashboardCard({ cards }) {
         return (
           <div
             key={card.key}
-            className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+            className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
           >
             {/* Header */}
 
@@ -72,7 +74,14 @@ function DashboardCard({ cards }) {
                   {card.title}
                 </p>
 
-                <h2 className="text-4xl font-bold mt-3">{data.total}</h2>
+                <h2 className="text-4xl font-bold mt-3">
+                  <CountUp
+                    end={data.total}
+                    duration={2}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                </h2>
               </div>
 
               <div
@@ -146,6 +155,9 @@ function DashboardCard({ cards }) {
                       fill={`url(#${card.gradientId})`}
                       dot={false}
                       activeDot={false}
+                      isAnimationActive
+                      animationDuration={1800}
+                      animationEasing="ease-out"
                     />
                   </AreaChart>
                 </ResponsiveContainer>

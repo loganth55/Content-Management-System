@@ -1,9 +1,10 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
-
+import * as CountUpModule from "react-countup";
 const COLORS = ["#7C3AED", "#2563EB", "#22C55E", "#F97316"];
 
 function ContentDistribution({ data }) {
   const total = data.reduce((sum, item) => sum + item.value, 0);
+  const CountUp = CountUpModule.default.default;
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-full">
@@ -29,20 +30,31 @@ function ContentDistribution({ data }) {
                 paddingAngle={4}
                 stroke="white"
                 strokeWidth={3}
+                animationBegin={0}
+                animationDuration={1800}
+                animationEasing="ease-out"
               >
                 {data.map((entry, index) => (
                   <Cell key={index} fill={COLORS[index]} />
                 ))}
               </Pie>
 
-              <Tooltip />
+              <Tooltip
+                contentStyle={{
+                  borderRadius: "12px",
+                  border: "none",
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                }}
+              />
             </PieChart>
           </ResponsiveContainer>
 
           {/* Center */}
 
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <h2 className="text-3xl font-bold">{total}</h2>
+            <h2 className="text-3xl font-bold">
+              <CountUp end={total} duration={2} enableScrollSpy scrollSpyOnce />
+            </h2>
 
             <p className="text-gray-500 text-sm">Total</p>
           </div>
@@ -52,7 +64,10 @@ function ContentDistribution({ data }) {
 
         <div className="flex-1 space-y-5 w-full">
           {data.map((item, index) => (
-            <div key={item.name} className="flex justify-between items-center">
+            <div
+              key={item.name}
+              className="flex justify-between items-center rounded-xl px-2 py-2 transition hover:bg-gray-50"
+            >
               <div className="flex items-center gap-3">
                 <div
                   className="w-3 h-3 rounded-full"
@@ -65,7 +80,14 @@ function ContentDistribution({ data }) {
               </div>
 
               <div className="text-right">
-                <p className="font-semibold">{item.value}</p>
+                <p className="font-semibold">
+                  <CountUp
+                    end={item.value}
+                    duration={2}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                </p>
 
                 <p className="text-xs text-gray-400">
                   {((item.value / total) * 100).toFixed(1)}%

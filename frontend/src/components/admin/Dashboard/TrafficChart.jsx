@@ -20,7 +20,7 @@ console.log(trafficOverview);
           <p className="text-gray-500 text-sm mt-1">Blogs created this week</p>
         </div>
 
-        <select className="border rounded-lg px-3 py-2 text-sm outline-none">
+        <select className="border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500">
           <option>Last 7 Days</option>
         </select>
       </div>
@@ -44,27 +44,61 @@ console.log(trafficOverview);
               </linearGradient>
             </defs>
 
-            <CartesianGrid strokeDasharray="4 4" stroke="#E5E7EB" />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#E5E7EB"
+            />
 
-            <XAxis dataKey="_id" tickLine={false} axisLine={false} />
+            <XAxis
+              dataKey="_id"
+              tickLine={false}
+              axisLine={false}
+              tick={{
+                fill: "#6B7280",
+                fontSize: 12,
+              }}
+            />
 
-            <YAxis tickLine={false} axisLine={false} />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tick={{
+                fill: "#6B7280",
+                fontSize: 12,
+              }}
+            />
 
-            <Tooltip />
-
+            <Tooltip
+              cursor={{
+                stroke: "#6D5DFC",
+                strokeDasharray: "4 4",
+              }}
+              contentStyle={{
+                borderRadius: "12px",
+                border: "none",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+              }}
+            />
             <Area
               type="monotone"
               dataKey="blogs"
               stroke="#6D5DFC"
               strokeWidth={3}
               fill="url(#trafficGradient)"
+              isAnimationActive
+              animationDuration={1800}
+              animationEasing="ease-out"
               dot={{
                 r: 4,
                 strokeWidth: 2,
                 fill: "#fff",
               }}
               activeDot={{
-                r: 6,
+                r: 7,
+                fill: "#6D5DFC",
+                stroke: "#fff",
+                strokeWidth: 2,
               }}
             />
           </AreaChart>

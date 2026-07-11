@@ -32,8 +32,8 @@ function CategoryModal({
   }, [editData,setFormData, setImage]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl w-full max-w-xl p-6">
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-5 sm:p-6">
         <h2 className="text-2xl font-bold">
           {editData ? "Edit Category" : "Add Category"}
         </h2>
@@ -128,7 +128,7 @@ function CategoryModal({
           )}
         </div>
 
-        <div className="flex justify-end gap-3 mt-8">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 mt-8">
           <button
             onClick={() => setOpen(false)}
             className="px-5 py-2 rounded-xl border border-gray-300 hover:bg-gray-100"
@@ -138,7 +138,7 @@ function CategoryModal({
 
           <button
             onClick={editData ? handleUpdateCategory : handleCreateCategory}
-            className="px-5 py-2 rounded-xl bg-purple-600 text-white hover:bg-purple-700"
+            className="w-full sm:w-auto px-5 py-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition"
           >
             {editData ? "Update Category" : "Create Category"}
           </button>

@@ -37,13 +37,27 @@ function MonthlyGrowth({ data }) {
               </linearGradient>
             </defs>
 
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid
+              strokeDasharray="4 4"
+              vertical={false}
+              stroke="#E5E7EB"
+            />
 
             <XAxis dataKey="month" tickLine={false} axisLine={false} />
 
             <YAxis tickLine={false} axisLine={false} />
 
-            <Tooltip />
+            <Tooltip
+              cursor={{
+                stroke: "#6366F1",
+                strokeDasharray: "4 4",
+              }}
+              contentStyle={{
+                borderRadius: "12px",
+                border: "none",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+              }}
+            />
 
             <Area
               type="monotone"
@@ -51,6 +65,10 @@ function MonthlyGrowth({ data }) {
               stroke="#6366F1"
               strokeWidth={3}
               fill="url(#usersGradient)"
+              isAnimationActive
+              animationDuration={1800}
+              animationEasing="ease-out"
+              
             />
           </AreaChart>
         </ResponsiveContainer>
