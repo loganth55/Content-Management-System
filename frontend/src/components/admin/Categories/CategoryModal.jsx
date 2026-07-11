@@ -138,7 +138,7 @@ function CategoryModal({
 
           <button
             onClick={editData ? handleUpdateCategory : handleCreateCategory}
-            className="w-full sm:w-auto px-5 py-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition"
+            className="w-full sm:w-auto px-5 py-2 rounded-xl border bg-purple-600 hover:bg-purple-700 text-white transition"
           >
             {editData ? "Update Category" : "Create Category"}
           </button>

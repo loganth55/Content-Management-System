@@ -184,8 +184,8 @@ return (
       status={status}
       setStatus={setStatus}
       setOpenModal={setOpenModal}
+      setEditData={setEditData}
     />
-
     <CategoryTable
       categories={categories}
       onEdit={(category) => {

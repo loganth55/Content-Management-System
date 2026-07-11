@@ -6,7 +6,8 @@ function CategoryFilters({
   status,
   setStatus,
   setOpenModal,
-}){
+  setEditData,
+}) {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
@@ -42,7 +43,10 @@ function CategoryFilters({
 
         {/* Right */}
         <button
-          onClick={() => setOpenModal(true)}
+          onClick={() => {
+            setEditData(null);
+            setOpenModal(true);
+          }}
           className="w-full md:w-auto bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition"
         >
           <Plus size={18} />
