@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageUploader from "../../components/user/ImageUploader";
+import { getUserCategories } from "../../services/userCategoryApi";
 
 import { getsinglepost, updatepost } from "../../services/blogApi";
 function UserEditBlog() {
@@ -14,6 +15,7 @@ function UserEditBlog() {
   const [content, setContent] = useState("");
   const [img, setImg] = useState(null);
   const [oldImg, setOldImg] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const IMAGE_BASE_URL = import.meta.env.VITE_API_URL;
   const updateBlog = async () => {
@@ -67,6 +69,18 @@ function UserEditBlog() {
     fetchBlog();
   }, [id]);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getUserCategories();
+        setCategories(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchCategories();
+  }, []);
   return (
     <section className="max-w-5xl mx-auto px-6 py-14">
       <div className="bg-white border border-slate-200 rounded-3xl shadow-sm p-8 md:p-10">
@@ -105,18 +119,18 @@ function UserEditBlog() {
           <label className="block text-sm font-semibold text-slate-700 mb-3">
             Category
           </label>
-
           <select
-            className="w-full px-5 py-4 border border-slate-300 rounded-xl outline-none focus:border-slate-900 transition"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            className="w-full px-5 py-4 border border-slate-300 rounded-xl outline-none focus:border-slate-900 transition"
           >
             <option value="">Select Category</option>
-            <option>Frontend</option>
-            <option>Backend</option>
-            <option>Database</option>
-            <option>Technology</option>
-            <option>AI</option>
+
+            {categories.map((item) => (
+              <option key={item._id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
           </select>
         </div>
 
