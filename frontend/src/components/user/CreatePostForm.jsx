@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ImageUploader from "./ImageUploader";
 import { createposts } from "../../services/blogApi";
 import { useNavigate } from "react-router-dom";
-import { getUserCategories } from "../../services/userCategoryApi";
+import { getUserCategories } from "../../services/UserCategoryApi";
 function CreatePostForm() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");

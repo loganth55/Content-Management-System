@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageUploader from "../../components/user/ImageUploader";
-import { getUserCategories } from "../../services/userCategoryApi";
+import { getUserCategories } from "../../services/UserCategoryApi";
 
 import { getsinglepost, updatepost } from "../../services/blogApi";
 function UserEditBlog() {
