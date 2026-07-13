@@ -24,8 +24,11 @@ function ImageUploader({
             <>
               <div className="relative w-full h-64 rounded-2xl overflow-hidden border border-slate-300 group">
                 <img
-                 src={
-                          img? URL.createObjectURL(img): `${IMAGE_BASE_URL}${oldImg}`}
+                  src={
+                    img
+                      ? URL.createObjectURL(img)
+                      : `${IMAGE_BASE_URL}${oldImg}`
+                  }
                   alt="Preview"
                   className="w-full h-full object-cover"
                 />
@@ -125,7 +128,10 @@ function ImageUploader({
         </button>
 
         <button
-          onClick={publishBlog}
+          type="button"
+          onClick={async () => {
+            await publishBlog();
+          }}
           className="px-8 py-3 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition"
         >
           Publish Blog

@@ -38,12 +38,13 @@ const publishBlog = async () => {
         img,
       });
       console.log(data);
-
+console.log("Blog created successfully");
       setTitle("");
       setDescription("");
       setCategory("");
       setImg(null);
       setContent("");
+      setCategories("")
     } else {
       navigate("/login");
     }
@@ -56,6 +57,7 @@ const publishBlog = async () => {
     );
   }
 };
+
 
 useEffect(() => {
   const fetchCategories = async () => {
